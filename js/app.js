@@ -15,14 +15,30 @@ function guardarCliente() {
     /** Revisar si hay campos vacios 
      * .some va a verificar que al menos uno cumpla esta condición
     */
-    const camposVacios = [ mesa, hora ].some( some => some === '');
+    const camposVacios = [mesa, hora].some(some => some === '');
 
     if (camposVacios) {
 
-        console.log('Hay al menos un campo vacio');
+        /** Verificar si ya hay una alerta */
+        const existeAlerta = document.querySelector('.invalid-feedback'); // null
 
-    } else {
+        if (!existeAlerta) {
 
-        console.log('Todos los campos estan llenos');
+            // console.log('Hay al menos un campo vacio');
+            const alerta = document.createElement('DIV');
+            alerta.classList.add('invalid-feedback', 'd-block', 'text-center');
+            alerta.textContent = 'Todos los campos son Obligatorios';
+            document.querySelector('.modal-body form').appendChild(alerta);
+
+            setTimeout(() => {
+
+                alerta.remove();
+
+            }, 3000);
+        }
+
+        return;
     }
+
+    console.log('Todos los campos estan llenos');
 }
