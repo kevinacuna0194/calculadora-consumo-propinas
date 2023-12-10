@@ -1,4 +1,4 @@
-let Cliente = {
+let cliente = {
     mesa: '',
     hora: '',
     pedido: []
@@ -40,5 +40,21 @@ function guardarCliente() {
         return;
     }
 
-    console.log('Todos los campos estan llenos');
+    // console.log('Todos los campos estan llenos');
+    /** Asignar datos del formulario a cliente
+     * Mantener propiedades del objeto cliente y sobrescribir fecha y hora */
+    cliente = { ...cliente, mesa, hora }
+
+    // console.log(cliente);
+
+    /** Ocultar modal
+     * Identificar Modal en html
+     * Pasar instancia a Botstrap. Obtener el modal actual
+     * métodos de Bootstrap para ocultarlo.
+     */
+    const modalFormulario = document.querySelector('#formulario');
+    const modalBootstrap = bootstrap.Modal.getInstance(modalFormulario);
+    modalBootstrap.hide();
+
+    console.log(cliente);
 }
