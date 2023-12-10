@@ -1,6 +1,6 @@
 # 40 - PROYECTO-Calculadora de Propinas con JSON-Server :bookmark_tabs:
 ~~~
-Calculadora de consumos y de propinas.
+Calculadora de consumos y propinas.
 ~~~
 ---
 <p align="center" font-weight="bold">
