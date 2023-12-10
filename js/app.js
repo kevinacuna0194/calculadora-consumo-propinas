@@ -122,6 +122,17 @@ function mostrarPlatillos(platillos) {
         inputCantidad.id = `porducto-${platillo.id}`;
         inputCantidad.classList.add('form-control');
 
+        /** función que detecta la cantidad y el platillo que se está agregando.
+         * Asociarle un evento a este elemento.
+         */
+        inputCantidad.onchange = function () {
+
+            const cantidad = parseInt(inputCantidad.value);
+            console.log('Cantidad: ', cantidad);
+            agregarPlatillo({...platillo, cantidad}); // Tener todo dentro de un mismo objeto.
+        }
+
+
         const agregar = document.createElement('DIV');
         agregar.classList.add('col-md-2');
         agregar.appendChild(inputCantidad);
@@ -132,4 +143,24 @@ function mostrarPlatillos(platillos) {
         row.appendChild(agregar);
         contenido.appendChild(row);
     });
+}
+
+function agregarPlatillo(producto) {
+
+    /** Extraer arreglo dentro del objeto */
+    let { pedido } = cliente;
+
+    /** console.log(producto); {id: 1, nombre: 'Pizza a la Leña Chica', precio: 30, categoria: 1, cantidad: 1} */
+    /** Revisar que la cantidad sea mayor a 0 */
+    if (producto.cantidad > 0) {
+
+        cliente.pedido = [...pedido, producto];
+
+    } else {
+
+        console.log('Cantidad menor a Cero');
+    }
+
+    console.log(cliente);
+    console.table(cliente.pedido);
 }
